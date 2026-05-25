@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
 
-        if (name === '' || phone === '') {
+        if (name === '' || email === '') {
             feedback.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.';
             feedback.className = 'form-feedback error';
             return;

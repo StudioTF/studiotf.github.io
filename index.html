@@ -3,7 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO -->
     <title>StudioTF | Moderne Webseiten für Wiener Unternehmen & Handwerker</title>
+    <meta name="description" content="StudioTF ist Ihre Webagentur aus Wien. Wir bauen moderne, mobile-optimierte Webseiten für KMUs und Handwerker – mit lokaler SEO, damit Sie in Wien gefunden werden.">
+    <meta name="keywords" content="Webagentur Wien, Webseite erstellen Wien, Webdesign Wien, Homepage Handwerker Wien, lokale SEO Wien, KMU Webseite Österreich">
+    <meta name="author" content="StudioTF">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.studiostf.at/">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.studiostf.at/">
+    <meta property="og:title" content="StudioTF | Moderne Webseiten für Wiener Unternehmen & Handwerker">
+    <meta property="og:description" content="Wir bauen moderne, blitzschnelle Webseiten für Wiener Betriebe und Handwerker – sichtbar bei Google, perfekt am Smartphone.">
+    <meta property="og:locale" content="de_AT">
+    <meta property="og:site_name" content="StudioTF">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="StudioTF | Webagentur Wien">
+    <meta name="twitter:description" content="Moderne Webseiten für Wiener KMUs & Handwerker. Lokale SEO, Mobile-First, DSGVO-konform.">
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "StudioTF",
+      "description": "Webagentur aus Wien für KMUs und Handwerksbetriebe. Webdesign, lokale SEO und Hosting.",
+      "url": "https://www.studiostf.at",
+      "areaServed": { "@type": "City", "name": "Wien" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Wien", "addressCountry": "AT" },
+      "serviceType": ["Webdesign", "SEO", "Webhosting"]
+    }
+    </script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +72,7 @@
                 <h1>Mehr Kunden durch eine Webseite,<br><em>die wirklich verkauft.</em></h1>
                 <p>Wir bauen moderne, blitzschnelle Webseiten für Wiener Betriebe und Handwerker – sichtbar bei Google, perfekt am Smartphone.</p>
                 <div class="hero-ctas">
-                    <a href="#kontakt" class="btn btn-primary">Kostenloses Erstgespräch</a>
+                    <a href="mailto:hallo@studiostf.at" class="btn btn-primary">Per E-Mail anfragen</a>
                     <a href="#arbeiten" class="btn btn-ghost">Unsere Arbeiten ansehen</a>
                 </div>
                 <div class="hero-stats">
@@ -202,7 +237,7 @@
                         </div>
                     </div>
                     <ul class="pricing-list">
-                        <li>High-Speed Hosting</li>
+                        <li>High-Speed Hosting in Österreich</li>
                         <li>Laufende Sicherheits-Updates</li>
                         <li>Kleine Text- & Bildänderungen inklusive</li>
                         <li>Monatlich oder jährlich kündbar</li>
@@ -229,7 +264,7 @@
                 <h2>Wer ist StudioTF?</h2>
                 <p>Wir sind zwei Webdesigner aus Wien, die es sich zur Aufgabe gemacht haben, den Wiener KMUs und Handwerkern zu einem digitalen Auftritt zu verhelfen, der ihnen tatsächlich neue Aufträge bringt.</p>
                 <p>Persönlich, unkompliziert und auf Augenhöhe. Kein Call-Center, keine anonyme Agentur – Sie haben immer einen direkten Draht zu uns.</p>
-                <a href="#kontakt" class="btn btn-primary">Uns kennenlernen</a>
+                <a href="mailto:hallo@studiostf.at" class="btn btn-primary">Jetzt per E-Mail melden</a>
             </div>
         </div>
     </section>
@@ -237,8 +272,8 @@
     <!-- CONTACT -->
     <section class="contact-section" id="kontakt">
         <div class="container">
-            <h2 class="section-title">Bereit für mehr Kunden?</h2>
-            <p class="section-subtitle">Schreiben Sie uns unverbindlich. Wir melden uns innerhalb von 24 Stunden.</p>
+            <h2 class="section-title">Jetzt unverbindlich anfragen</h2>
+            <p class="section-subtitle">Schreiben Sie uns einfach eine E-Mail. Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
             
             <form id="contactForm" class="contact-form">
                 <div class="form-group">
@@ -246,14 +281,14 @@
                     <input type="text" id="name" required placeholder="z.B. Tischlerei Muster GmbH">
                 </div>
                 <div class="form-group">
-                    <label for="phone">Telefonnummer</label>
-                    <input type="tel" id="phone" required placeholder="z.B. +43 660 1234567">
+                    <label for="email">Ihre E-Mail-Adresse</label>
+                    <input type="email" id="email" required placeholder="z.B. office@ihr-betrieb.at">
                 </div>
                 <div class="form-group">
                     <label for="website">Aktuelle Webseite (falls vorhanden)</label>
                     <input type="url" id="website" placeholder="www.ihre-seite.at">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Jetzt Anfrage senden</button>
+                <button type="submit" class="btn btn-primary btn-block">Anfrage senden</button>
                 <div id="formFeedback" class="form-feedback"></div>
             </form>
         </div>
