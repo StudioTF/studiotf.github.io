@@ -302,21 +302,26 @@
             <h2 class="section-title">Jetzt unverbindlich anfragen</h2>
             <p class="section-subtitle">Schreiben Sie uns einfach eine E-Mail. Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
             
+            <div data-fs-success class="form-feedback success" style="display: none; margin-top: 14px; text-align: center;">✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden.</div>
+            <div data-fs-error class="form-feedback error" style="display: none; margin-top: 14px; text-align: center;"></div>
+            
             <form id="contactForm" class="contact-form">
                 <div class="form-group">
                     <label for="name">Name / Firma</label>
-                    <input type="text" id="name" required placeholder="z.B. Tischlerei Muster GmbH">
+                    <input type="text" id="name" name="name" required placeholder="z.B. Tischlerei Muster GmbH" data-fs-field>
+                    <span data-fs-error="name" class="form-error" style="display: none; font-size: 0.8rem; color: #DC2626; margin-top: 4px;"></span>
                 </div>
                 <div class="form-group">
                     <label for="email">Ihre E-Mail-Adresse</label>
-                    <input type="email" id="email" required placeholder="z.B. office@ihr-betrieb.at">
+                    <input type="email" id="email" name="email" required placeholder="z.B. office@ihr-betrieb.at" data-fs-field>
+                    <span data-fs-error="email" class="form-error" style="display: none; font-size: 0.8rem; color: #DC2626; margin-top: 4px;"></span>
                 </div>
                 <div class="form-group">
                     <label for="website">Aktuelle Webseite (falls vorhanden)</label>
-                    <input type="url" id="website" placeholder="www.ihre-seite.at">
+                    <input type="url" id="website" name="website" placeholder="www.ihre-seite.at" data-fs-field>
+                    <span data-fs-error="website" class="form-error" style="display: none; font-size: 0.8rem; color: #DC2626; margin-top: 4px;"></span>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Anfrage senden</button>
-                <div id="formFeedback" class="form-feedback"></div>
+                <button type="submit" class="btn btn-primary btn-block" data-fs-submit-btn>Anfrage senden</button>
             </form>
         </div>
     </section>
@@ -332,6 +337,11 @@
         </div>
     </footer>
 
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contactForm', formId: 'mykvdoap' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     <script src="script.js"></script>
 </body>
 </html>
