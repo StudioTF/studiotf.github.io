@@ -723,3 +723,121 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* --- OPTIONAL PRICING ITEM --- */
+.pricing-list-item--optional {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+}
+.pricing-list-item--optional::before { border-color: #CBD5E1 !important; }
+.optional-tag {
+    display: inline-block;
+    background: #F1F5F9;
+    color: #64748B;
+    border: 1px solid #CBD5E1;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* --- ADD-ONS --- */
+.addons-wrap {
+    margin-top: 40px;
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+}
+.addons-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.addons-label {
+    display: inline-block;
+    background: var(--dark);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+.addons-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+.addons-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+.addon-card {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--light-bg);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.2s, background 0.2s;
+}
+.addon-card:hover {
+    border-color: var(--primary);
+    background: #EFF6FF;
+}
+.addon-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+.addon-icon svg { width: 20px; height: 20px; }
+.addon-body h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.addon-badge {
+    display: inline-block;
+    background: #DBEAFE;
+    color: var(--primary);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-body);
+}
+.addon-body p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .addons-grid { grid-template-columns: 1fr 1fr; }
+}
