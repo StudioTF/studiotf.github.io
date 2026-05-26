@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Preise & Pakete | StudioTF – Webagentur Wien</title>
+    <meta name="description" content="Transparente Website-Preise für Wiener KMUs und Handwerker. Starter ab 650€, Professional 1.299€, Enterprise ab 1.999€. Hosting & Support optional dazu.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.studiostf.at/preise.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        /* ── PAGE-SPECIFIC: Preise ── */
+
+        .page-hero {
+            padding: 64px 0 56px;
+            text-align: center;
+            background: linear-gradient(150deg, #EFF6FF 0%, #fff 50%, #F0FDF4 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+        .page-hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* ── MAIN PRICING CARDS ── */
+        .pkg-section { padding: 80px 0 40px; }
+
+        .pkg-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .pkg-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pkg-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(37,99,235,0.08);
+        }
+        .pkg-card--featured {
+            border: 2px solid var(--primary);
+            background: #FAFCFF;
+        }
+
+        .pkg-featured-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 16px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .pkg-name {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .pkg-price {
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .pkg-price-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .pkg-features {
+            list-style: none;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+        .pkg-features li {
+            padding: 11px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.93rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .pkg-features li:last-child { border-bottom: none; }
+        .pkg-features li strong { display: block; margin-bottom: 2px; }
+        .pkg-features li span { color: var(--text-muted); font-size: 0.82rem; display: block; }
+
+        .pkg-check {
+            width: 18px;
+            height: 18px;
+            color: #059669;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── INFO NOTE ── */
+        .info-note {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            background: #EFF6FF;
+            border-left: 3px solid var(--primary);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 20px 24px;
+            margin: 40px 0 0;
+            font-size: 0.93rem;
+        }
+        .info-note svg { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+        .info-note p { color: var(--dark); line-height: 1.6; margin: 0; }
+
+        /* ── MONTHLY / HOSTING ── */
+        .hosting-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        .hosting-section .section-title { text-align: center; }
+
+        .hosting-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .hosting-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .hosting-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(37,99,235,0.07);
+        }
+        .hosting-card-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hosting-card-title svg { width: 18px; height: 18px; color: var(--primary); }
+        .hosting-price {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+        .hosting-price-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+        .hosting-features {
+            list-style: none;
+        }
+        .hosting-features li {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .hosting-features li::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 11px;
+            width: 8px;
+            height: 4px;
+            border-left: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+            transform: rotate(-45deg);
+        }
+
+        .hosting-note {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            padding: 16px;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        /* ── FAQ ── */
+        .faq-section { padding: 80px 0; }
+        .faq-section .section-title { text-align: center; margin-bottom: 40px; }
+
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-item:first-child { border-top: 1px solid var(--border); }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 20px 0;
+            font-family: var(--font-body);
+            font-size: 0.97rem;
+            font-weight: 500;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .faq-question:hover { color: var(--primary); }
+        .faq-chevron {
+            width: 18px;
+            height: 18px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+        .faq-answer {
+            display: none;
+            padding-bottom: 20px;
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .faq-item.open .faq-answer { display: block; }
+
+        /* ── CTA BANNER ── */
+        .cta-banner {
+            margin: 0 0 80px;
+            background: var(--dark);
+            border-radius: var(--radius);
+            padding: 56px 40px;
+            text-align: center;
+            color: #fff;
+        }
+        .cta-banner h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        .cta-banner p {
+            color: #94A3B8;
+            margin-bottom: 28px;
+            font-size: 1rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (min-width: 768px) {
+            .pkg-grid { grid-template-columns: repeat(3, 1fr); align-items: start; }
+            .hosting-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 767px) {
+            .pkg-card { padding: 28px 24px; }
+            .cta-banner { padding: 40px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container header-flex">
+            <a href="index.html" class="logo">Studio<span>TF</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html#vorteile">Vorteile</a>
+                <a href="index.html#arbeiten">Arbeiten</a>
+                <a href="index.html#angebot">Angebot</a>
+                <a href="index.html#ueber-uns">Über uns</a>
+                <a href="preise.html">Preise</a>
+                <a href="index.html#kontakt" class="btn btn-primary">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="container">
+            <span class="badge">Transparente Preise</span>
+            <h1>Website-Pakete für<br>Handwerker & KMUs</h1>
+            <p>Professionelle Webseiten mit fairen, klaren Preisen – ohne versteckte Kosten, ohne Überraschungen.</p>
+        </div>
+    </div>
+
+    <!-- PRICING PACKAGES -->
+    <section class="pkg-section">
+        <div class="container">
+            <div class="pkg-grid">
+
+                <!-- STARTER -->
+                <div class="pkg-card reveal">
+                    <div class="pkg-name">Starter</div>
+                    <div class="pkg-price">ab 650€</div>
+                    <div class="pkg-price-note">Einmalig &middot; Ohne Hosting</div>
+                    <ul class="pkg-features">
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>3–5 Seiten</strong><span>Homepage, Services, Kontakt + optional weitere</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Design angepasst</strong><span>Farben, Fonts, Layout nach Ihren Wünschen</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Mobile-optimiert</strong><span>Responsive auf allen Geräten</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Kontaktformular</strong><span>Mit Spam-Schutz</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Basis-SEO</strong><span>Meta-Tags, Sitemap, Seitenstruktur</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>SSL & DSGVO-konform</strong><span>HTTPS & Datenschutz</span></div>
+                        </li>
+                    </ul>
+                    <a href="mailto:webstudiotf@gmail.com?subject=Anfrage%20Starter-Paket" class="btn btn-ghost btn-block">Anfrage stellen</a>
+                </div>
+
+                <!-- PROFESSIONAL (featured) -->
+                <div class="pkg-card pkg-card--featured reveal">
+                    <div class="pkg-featured-badge">⭐ Beliebtestes Paket</div>
+                    <div class="pkg-name">Professional</div>
+                    <div class="pkg-price">1.299€</div>
+                    <div class="pkg-price-note">Einmalig &middot; Ohne Hosting</div>
+                    <ul class="pkg-features">
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>5–8 Seiten</strong><span>Homepage, mehrere Services, Portfolio, Team</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Premium Design</strong><span>Individuell angepasst, hochwertig</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Mobile-optimiert</strong><span>Responsive auf allen Geräten</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Kontaktformular</strong><span>Mit Spam-Schutz</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>SEO-Optimierung</strong><span>Keywords, lokale SEO, Struktur</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Google My Business</strong><span>Lokale Auffindbarkeit optimiert</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Analytics Setup</strong><span>Optional: Google Analytics 4 + Conversion Tracking (+200€)</span></div>
+                        </li>
+                    </ul>
+                    <a href="mailto:webstudiotf@gmail.com?subject=Anfrage%20Professional-Paket" class="btn btn-primary btn-block">Jetzt anfragen</a>
+                </div>
+
+                <!-- ENTERPRISE -->
+                <div class="pkg-card reveal">
+                    <div class="pkg-name">Enterprise</div>
+                    <div class="pkg-price">ab 1.999€</div>
+                    <div class="pkg-price-note">Einmalig &middot; Ohne Hosting</div>
+                    <ul class="pkg-features">
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>8–12+ Seiten</strong><span>Komplett individuell konfigurierbar</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Premium Custom Design</strong><span>Einzigartig, markenkonform</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Advanced Features</strong><span>Blog, Buchungssysteme, erweiterte Funktionen</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Full SEO-Optimierung</strong><span>Keywords, Landingpages, Struktur</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Analytics + Tracking</strong><span>Google Analytics 4 + Custom Events</span></div>
+                        </li>
+                        <li>
+                            <svg class="pkg-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                            <div><strong>Priority Support</strong><span>Schnelle Reaktionszeiten, direkte Leitung</span></div>
+                        </li>
+                    </ul>
+                    <a href="mailto:webstudiotf@gmail.com?subject=Anfrage%20Enterprise-Paket" class="btn btn-ghost btn-block">Anfrage stellen</a>
+                </div>
+            </div>
+
+            <!-- Info Note -->
+            <div class="info-note">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" /></svg>
+                <p><strong>Domain & Hosting sind nicht enthalten.</strong> Sie können diese selbst bei einem Anbieter registrieren, oder wir helfen Ihnen beim Setup. Mit unserem optionalen Hosting-Paket (ab 20€/Monat) kümmern wir uns um alles. Texte und Bilder sind ebenfalls nicht enthalten – bei Bedarf können wir ein professionelles Fotoshooting organisieren.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOSTING / MONTHLY -->
+    <section class="hosting-section">
+        <div class="container">
+            <span class="badge">Monatliche Services</span>
+            <h2 class="section-title">Hosting & Support</h2>
+            <p class="section-subtitle">Flexibel, jederzeit kündbar – keine Mindestlaufzeit.</p>
+
+            <div class="hosting-grid">
+                <div class="hosting-card">
+                    <div class="hosting-card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 6 0m-6 0H2.25m13.5 0a3 3 0 0 0 3-3m-3 3a3 3 0 1 1 6 0m-6 0h3.75m-3.75 0H21" /></svg>
+                        Hosting
+                    </div>
+                    <div class="hosting-price">20€</div>
+                    <div class="hosting-price-note">/Monat</div>
+                    <ul class="hosting-features">
+                        <li>Shared Hosting in Österreich</li>
+                        <li>SSL-Zertifikat inklusive</li>
+                        <li>Automatische Backups</li>
+                        <li>99,9% Uptime-Garantie</li>
+                    </ul>
+                </div>
+
+                <div class="hosting-card">
+                    <div class="hosting-card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" /></svg>
+                        Hosting + Wartung
+                    </div>
+                    <div class="hosting-price">50€</div>
+                    <div class="hosting-price-note">/Monat</div>
+                    <ul class="hosting-features">
+                        <li>Alles aus Hosting +</li>
+                        <li>Laufende Sicherheits-Updates</li>
+                        <li>Performance-Monitoring</li>
+                        <li>Kleine Änderungen (bis 2h/Monat)</li>
+                    </ul>
+                </div>
+
+                <div class="hosting-card">
+                    <div class="hosting-card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" /></svg>
+                        Hosting + Wartung + Analytics
+                    </div>
+                    <div class="hosting-price">75€</div>
+                    <div class="hosting-price-note">/Monat</div>
+                    <ul class="hosting-features">
+                        <li>Alles aus Wartung +</li>
+                        <li>Monatliche Analytics-Reports</li>
+                        <li>Performance-Analyse</li>
+                        <li>Optimierungs-Empfehlungen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="hosting-note"><strong>Alle monatlichen Services sind jederzeit kündbar.</strong> Keine Mindestlaufzeit, keine versteckten Gebühren.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <span class="badge" style="display:block;text-align:center;width:fit-content;margin:0 auto 12px;">FAQ</span>
+            <h2 class="section-title">Häufig gestellte Fragen</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Wie unterscheiden sich die Pakete?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <strong>Starter</strong> ist ideal für kleine Betriebe, die schnell und unkompliziert online gehen möchten (3–5 Seiten).<br>
+                        <strong>Professional</strong> ist unser meistgebuchtes Paket für Handwerker und KMUs – mehr Seiten, vollständige SEO-Optimierung und Google My Business (5–8 Seiten).<br>
+                        <strong>Enterprise</strong> ist für größere Projekte mit individuellen Anforderungen, erweiterten Funktionen wie Blog oder Buchungssystemen und Priority Support.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Was kostet Domain und Hosting?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Eine .at-Domain kostet ca. 10–15€ pro Jahr und kann bei jedem Anbieter registriert werden. Hosting ist ein optionaler Zusatz – mit unserem Hosting-Paket zahlen Sie nur 20€/Monat und wir kümmern uns um alles.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Wie lange dauert die Erstellung?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Starter: ca. 2 Wochen &nbsp;|&nbsp; Professional: ca. 3 Wochen &nbsp;|&nbsp; Enterprise: ca. 4–6 Wochen. Erste Designentwürfe erhalten Sie bereits innerhalb von 48 Stunden nach Auftragsstart.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Kann ich später mehr Seiten hinzufügen?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Ja, jederzeit. Zusätzliche Seiten können nachträglich hinzugefügt werden. Schreiben Sie uns einfach und wir erstellen ein individuelles Angebot.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Sind Texte und Bilder enthalten?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Texte und Bilder sind in den Paketpreisen nicht enthalten. Sie können uns Ihre eigenen Inhalte zur Verfügung stellen, oder wir organisieren auf Wunsch ein professionelles Fotoshooting für Ihren Betrieb.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Kann ich die Website nach Fertigstellung selbst bearbeiten?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Ja. Wir übergeben alle Dateien und Zugänge und zeigen Ihnen, wie Sie einfache Anpassungen selbst vornehmen können. Für größere Änderungen stehen wir natürlich zur Verfügung.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <div class="container">
+        <div class="cta-banner">
+            <h2>Bereit für Ihre neue Webseite?</h2>
+            <p>Schreiben Sie uns unverbindlich – wir melden uns innerhalb von 24 Stunden.</p>
+            <a href="mailto:webstudiotf@gmail.com?subject=Anfrage%20Website-Paket" class="btn btn-white">Jetzt per E-Mail anfragen</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-flex">
+            <div class="logo">Studio<span>TF</span></div>
+            <p>&copy; 2026 StudioTF. Alle Preise exkl. MwSt.</p>
+            <div class="footer-links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+</html>

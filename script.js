@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.card, .work-item, .pricing-card, .about-image-wrap, .about-text').forEach(el => {
+    document.querySelectorAll('.card, .work-item, .pricing-card, .pkg-card, .about-image-wrap, .about-text').forEach(el => {
         el.classList.add('reveal');
         observer.observe(el);
     });
