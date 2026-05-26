@@ -581,7 +581,7 @@ body {
 .about-text .btn { margin-top: 8px; }
 
 /* --- CONTACT --- */
-.contact-section { padding: 90px 0; }
+.contact-section { padding: 90px 0; background: var(--light-bg); }
 .contact-section .section-title { text-align: center; }
 .contact-form {
     max-width: 460px;
